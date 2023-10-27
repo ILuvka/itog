@@ -1,2 +1,12 @@
 /venv
 database.db
+/handlers
+/keyboards
+app.py
+db.py
+desktop.ini
+filters.py
+loader.py
+main.py
+schema.sql
+config.py

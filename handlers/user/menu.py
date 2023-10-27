@@ -11,21 +11,20 @@ settings = '⚙️ Настройка каталога'
 orders = '🚚 Заказы'
 questions = '❓ Вопросы'
 
-@dp.callback_query_handler(IsAdmin, lambda c: c.data == 'Menu')
+@dp.message_handler(IsAdmin(), text='Меню')
 async def admin_menu(message: Message):
 
     markup = ReplyKeyboardMarkup(selective=True)
     markup.add(settings)
     markup.add(questions, orders)
 
-    await message.answer('Меню', reply_markup=markup)
+    await message.answer('Меню ', reply_markup=markup)
 
-@dp.message_handler(IsUser())
+@dp.message_handler(IsUser(), text='Меню')
 async def user_menu(message: Message):
-    if message.text == 'Меню':
-        markup = ReplyKeyboardMarkup(selective=True)
-        markup.add(catalog)
-        markup.add(balance, cart)
-        markup.add(delivery_status)
+    markup = ReplyKeyboardMarkup(selective=True)
+    markup.add(catalog)
+    markup.add(balance, cart)
+    markup.add(delivery_status)
 
-        await message.answer('Меню', reply_markup=markup)
+    await message.answer('Меню ', reply_markup=markup)
